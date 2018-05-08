@@ -36,6 +36,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.service.ResolvedMethodParameter;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.annotations.RequestModel;
 import springfox.documentation.spi.service.ParameterBuilderPlugin;
 import springfox.documentation.spi.service.contexts.OperationContext;
 import springfox.documentation.spi.service.contexts.ParameterContext;
@@ -70,6 +71,8 @@ public class ParameterTypeReader implements ParameterBuilderPlugin {
       return "path";
     } else if (resolvedMethodParameter.hasParameterAnnotation(RequestBody.class)) {
       return "body";
+    } else if (resolvedMethodParameter.hasParameterAnnotation(RequestModel.class)) {
+      return "model";
     } else if (resolvedMethodParameter.hasParameterAnnotation(RequestPart.class)) {
       return "formData";
     } else if (resolvedMethodParameter.hasParameterAnnotation(RequestParam.class)) {

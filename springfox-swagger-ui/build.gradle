@@ -29,14 +29,26 @@ plugins {
 }
 
 ext {
-  swaggerUiVersion = '3.14.0'
+  swaggerUiVersion = 'master'
   swaggerUiDist = "build/libs/swagger-ui-dist.zip"
   swaggerUiExplodedDir = "swagger-ui-${swaggerUiVersion}/dist/"
-  downloadUrl = "https://github.com/swagger-api/swagger-ui/archive/v${swaggerUiVersion}.zip"
+  downloadUrl = "https://codeload.github.com/zhaojigang/swagger-ui/zip/${swaggerUiVersion}"
+//  downloadUrl = "https://github.com/swagger-api/swagger-ui/archive/v${swaggerUiVersion}.zip"
   destinationZip = "$buildDir/zip/${swaggerUiVersion}.zip"
   replacePath = 'window.location.origin + "\\${pageContext.request.contextPath}/api-docs"'
   artifactRepoBase = 'http://oss.jfrog.org/artifactory'
 }
+
+//ext {
+//  swaggerUiVersion = '3.14.0'
+//  swaggerUiDist = "build/libs/swagger-ui-dist.zip"
+//  swaggerUiExplodedDir = "swagger-ui-${swaggerUiVersion}/dist/"
+//  downloadUrl = "https://codeload.github.com/zhaojigang/swagger-ui/zip/v${swaggerUiVersion}"
+////  downloadUrl = "https://github.com/swagger-api/swagger-ui/archive/v${swaggerUiVersion}.zip"
+//  destinationZip = "$buildDir/zip/${swaggerUiVersion}.zip"
+//  replacePath = 'window.location.origin + "\\${pageContext.request.contextPath}/api-docs"'
+//  artifactRepoBase = 'http://oss.jfrog.org/artifactory'
+//}
 
 dependencies {
   compile project(':springfox-spring-web')

@@ -34,6 +34,7 @@ import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.service.Parameter;
 import springfox.documentation.service.ResolvedMethodParameter;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.annotations.RequestModel;
 import springfox.documentation.spi.schema.EnumTypeDeterminer;
 import springfox.documentation.spi.service.OperationBuilderPlugin;
 import springfox.documentation.spi.service.contexts.OperationContext;
@@ -156,7 +157,8 @@ public class OperationParameterReader implements OperationBuilderPlugin {
         && !isBaseType(typeNameFor(resolvedParamType.getErasedType()))
         && !enumTypeDeterminer.isEnum(resolvedParamType.getErasedType())
         && !isContainerType(resolvedParamType)
-        && !isMapType(resolvedParamType);
+        && !isMapType(resolvedParamType)
+        && !parameter.hasParameterAnnotation(RequestModel.class);
 
   }
 
