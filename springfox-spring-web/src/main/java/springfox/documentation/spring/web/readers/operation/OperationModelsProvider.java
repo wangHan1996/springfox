@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestPart;
 import springfox.documentation.service.ResolvedMethodParameter;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.annotations.RequestModel;
 import springfox.documentation.spi.service.OperationModelsProviderPlugin;
 import springfox.documentation.spi.service.contexts.RequestMappingContext;
 
@@ -85,7 +86,8 @@ public class OperationModelsProvider implements OperationModelsProviderPlugin {
     List<ResolvedMethodParameter> parameterTypes = context.getParameters();
     for (ResolvedMethodParameter parameterType : parameterTypes) {
         if (parameterType.hasParameterAnnotation(RequestBody.class)
-            || parameterType.hasParameterAnnotation(RequestPart.class)) {
+            || parameterType.hasParameterAnnotation(RequestPart.class)
+                || parameterType.hasParameterAnnotation(RequestModel.class)) {
           ResolvedType modelType = context.alternateFor(parameterType.getParameterType());
           LOG.debug("Adding input parameter of type {}", resolvedTypeSignature(modelType).or("<null>"));
           context.operationModelsBuilder().addInputParam(modelType);
